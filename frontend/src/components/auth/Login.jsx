@@ -4,6 +4,8 @@ import axios from "axios";
 import { saveAuthToken } from "../../utils/authHelpers";
 import "./AuthForm.css";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,7 +26,7 @@ const Login = () => {
     }
 
     try {
-      const response = await axios.post("/api/auth/login", { email, password });
+      const response = await axios.post(`${apiUrl}/api/auth/login`, { email, password });
       saveAuthToken(response.data.token);
       setSuccessMessage("Login successful! Welcome back."); // Set success message
       console.log("Login successful:", response.data);

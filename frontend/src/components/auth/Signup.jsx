@@ -4,6 +4,8 @@ import axios from "axios";
 import { saveAuthToken } from "../../utils/authHelpers";
 import "./AuthForm.css";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,7 +32,7 @@ const Signup = () => {
     }
 
     try {
-      const response = await axios.post("/api/auth/signup", { email, password });
+      const response = await axios.post(`${apiUrl}/api/auth/signup`, { email, password });
       saveAuthToken(response.data.token);
       setSuccessMessage("Signup successful! Welcome to the platform."); // Set success message
       console.log("Signup successful:", response.data);
