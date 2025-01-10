@@ -4,6 +4,8 @@ import { removeAuthToken } from "../utils/authHelpers";
 import { useNavigate } from "react-router-dom";
 import "./Chatbot.css";
 
+const apiUrl = process.env.REACT_APP_API_URL;
+
 const Chatbot = () => {
   const [message, setMessage] = useState("");
   const [conversation, setConversation] = useState([]);
