@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { saveAuthToken } from "../utils/authHelpers";
+import { saveAuthToken } from "../../utils/authHelpers";
 import "./AuthForm.css";
 
 const apiUrl = process.env.REACT_APP_API_URL;
