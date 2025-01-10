@@ -11,6 +11,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState(""); // New state for success message
+  const [isLoading, setIsLoading] = useState(false); // Add isLoading state
+  const navigate = useNavigate(); // Add this line
 
 
   const handleLogin = async (e) => {
