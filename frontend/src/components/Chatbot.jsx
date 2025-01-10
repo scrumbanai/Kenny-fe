@@ -18,7 +18,7 @@ const Chatbot = () => {
     try {
       const token = localStorage.getItem("token") || sessionStorage.getItem("token");
       const response = await axios.post(
-        "/api/chat",
+        `${apiUrl}/api/chat`,
         { message },
         {
           headers: {
