@@ -68,7 +68,9 @@ const Login = () => {
         }}
         required
       />
-      <button type="submit">Login</button>
+      <button type="submit" disabled={isLoading}>
+        {isLoading ? "Logging in..." : "Login"}
+      </button>
       {errorMessage && <div className="error-message">{errorMessage}</div>} {/* Display error message */}
       {successMessage && <div className="success-message">{successMessage}</div>} {/* Display success message */}
 
