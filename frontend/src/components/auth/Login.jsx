@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import axios from "axios";
 import { saveAuthToken } from "../../utils/authHelpers";
 import "./AuthForm.css";
