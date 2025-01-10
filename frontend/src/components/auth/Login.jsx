@@ -25,15 +25,20 @@ const Login = () => {
       return;
     }
 
+    setIsLoading(true); // Start loading
+
     try {
       const response = await axios.post(`${apiUrl}/api/auth/login`, { email, password });
       saveAuthToken(response.data.token);
       setSuccessMessage("Login successful! Welcome back."); // Set success message
       console.log("Login successful:", response.data);
-      // Redirect to dashboard or other protected page here
+      // Redirect to the chatbot page or dashboard
+      navigate("/chatbot"); // Add this
     } catch (error) {
       console.error("Login error:", error.response?.data || error.message);
       setErrorMessage("Login failed. Please check your credentials.");
+    } finally {
+      setIsLoading(false); // Stop loading
     }
   };
 
@@ -44,14 +49,21 @@ const Login = () => {
         type="email"
         placeholder="Email"
         value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        onChange={(e) => { setEmail(e.target.value);
+          setErrorMessage(""); // Clear error message
+          setSuccessMessage(""); // Clear success message
+        }}
         required
       />
       <input
         type="password"
         placeholder="Password"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => {
+          setPassword(e.target.value);
+          setErrorMessage(""); // Clear error message
+          setSuccessMessage(""); // Clear success message
+        }}
         required
       />
       <button type="submit">Login</button>
